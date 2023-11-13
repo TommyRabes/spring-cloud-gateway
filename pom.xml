@@ -16,6 +16,9 @@
 	<properties>
 		<java.version>21</java.version>
 		<spring-cloud.version>2022.0.4</spring-cloud.version>
+		<oauth2.authorization.server.hostname>localhost</oauth2.authorization.server.hostname>
+		<spring-servlet-webapp>localhost</spring-servlet-webapp>
+		<spring-reactive-webapp>localhost</spring-reactive-webapp>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -53,5 +56,16 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>docker</id>
+			<properties>
+				<oauth2.authorization.server.hostname>oauth2-authorization-server</oauth2.authorization.server.hostname>
+				<spring-servlet-webapp>spring-boot-webapp</spring-servlet-webapp>
+				<spring-reactive-webapp>spring-6-reactive-app</spring-reactive-webapp>
+			</properties>
+		</profile>
+	</profiles>
 
 </project>
